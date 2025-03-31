@@ -184,3 +184,21 @@ ul {
     width: 50%;
     float: right;
 }
+
+.blogcontent2{
+    background-color: #ececec;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 2%;
+    height: auto;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.contentlink{
+    text-align: center;
+}
+.contentlink a{
+    color: #4fa3f8;
+}
