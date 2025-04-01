@@ -26,7 +26,7 @@ ul {
     margin: 0;
 }
 
-.header {
+.header1 {
     background-image: url(../image/drawing2.png);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -108,6 +108,15 @@ ul {
     width: 100%;
     height: 50px;
     background-color: white;
+}
+
+.navbar.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white; /* Optional: Ensure the navbar has a background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
 }
 
 .navbar-content {

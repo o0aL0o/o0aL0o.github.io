@@ -19,7 +19,7 @@
             </ul>  
         </div>
     </header>
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <div class="navbar-content">
             <a href="../index.html"><p class="navbar-text">Home & Profile</p></a>
             <a href="../project.html"><p class="navbar-text">Project blog</p></a>
@@ -66,5 +66,17 @@
             </div>
         </div>
     </div>
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            const threshold = 36; // Adjust this value to match the height of the header
+    
+            if (window.pageYOffset >= threshold) {
+                navbar.classList.add('fixed');
+            } else {
+                navbar.classList.remove('fixed');
+            }
+        });
+    </script>
 </body>
 </html>
