@@ -27,14 +27,14 @@ ul {
 }
 
 .header {
-    background-image: url(../image/drawing.png);
+    background-image: url(../image/drawing2.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    height: auto;
+    min-height: 80vh;
 }
 
 .header2 {
-    background-color: #212529;
+    background-color: #2d2c2c;
 }
 
 .container {
@@ -51,14 +51,14 @@ ul {
     position: relative;
     top: 20px;
     margin: 0;
-    font-size: 50px;
+    font-size: 2vw;
     color: #dddddd;
     letter-spacing: 3px;
     height: 50px;
 }
 .header-title {
     margin: 0;
-    font-size: 100px;
+    font-size: 5vw;
     color: #dddddd;
     letter-spacing: 3px;
     height: 90px;
@@ -67,7 +67,7 @@ ul {
 
 .header-mono {
     margin: 0;
-    font-size: 25px;
+    font-size: 1vw;
     color: #dddddd;
     letter-spacing: 5px;
 }
