@@ -30,7 +30,37 @@ ul {
     background-image: url(../image/drawing2.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    min-height: 80vh;
+    height: 80vh;
+}
+
+@media only screen and (max-width: 1360px){
+    .header1 {
+        height: 70vh;
+    }
+}
+
+@media only screen and (max-width: 1126px){
+    .header1 {
+        height: 60vh;
+    }
+}
+
+@media only screen and (max-width: 989px){
+    .header1 {
+        height: 50vh;
+    }
+}
+
+@media only screen and (max-width: 863px){
+    .header1 {
+        height: 40vh;
+    }
+}
+
+@media only screen and (max-width: 690px){
+    .header1 {
+        height: 30vh;
+    }
 }
 
 .header2 {
@@ -52,23 +82,23 @@ ul {
     top: 20px;
     margin: 0;
     font-size: 2vw;
-    color: #dddddd;
+    color: #ffffff;
     letter-spacing: 3px;
     height: 50px;
 }
 .header-title {
     margin: 0;
     font-size: 5vw;
-    color: #dddddd;
+    color: #ffffff;
     letter-spacing: 3px;
     height: 90px;
-    margin-bottom: 70px;
+    margin-bottom: 10%;
 }
 
 .header-mono {
     margin: 0;
     font-size: 1vw;
-    color: #dddddd;
+    color: #ffffff;
     letter-spacing: 5px;
 }
 
@@ -108,6 +138,18 @@ ul {
     width: 100%;
     height: 50px;
     background-color: white;
+}
+
+@media only screen and (max-width: 881px){
+    .navbar {
+        height: 100px;
+    }
+}
+
+@media only screen and (max-width: 514px){
+    .navbar {
+        height: 150px;
+    }
 }
 
 .navbar.fixed {
@@ -158,19 +200,21 @@ ul {
     flex-wrap: wrap;
     align-content: flex-start;
     height: auto;
+    gap: 20px;
 }
 
 .blogcontent{
     background-color: #ececec;
     margin-top: 5%;
     margin-bottom: 5%;
-    margin-left: 2%;
-    margin-right: 2%;
     padding: 2%;
     height: 100%;
     width: 350px;
     border-radius: 10px;
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .blogcontent a{
