@@ -74,10 +74,10 @@
         </div>
     </div>
     <script>
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            const threshold = 36; // Adjust this value to match the height of the header
+        const navbar = document.getElementById('navbar');
+        const threshold = navbar.offsetTop;
     
+        window.addEventListener('scroll', function() {
             if (window.pageYOffset >= threshold) {
                 navbar.classList.add('fixed');
             } else {

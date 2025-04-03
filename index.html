@@ -26,7 +26,7 @@
             </div>
         </div>
     </header>
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <div class="navbar-content">
             <a href="index.html"><p class="navbar-text">Home & Profile</p></a>
             <a href="project.html"><p class="navbar-text">Project blog</p></a>
@@ -71,6 +71,18 @@
             </p>
         </div>
     </div>
+    <script>
+        const navbar = document.getElementById('navbar');
+        const threshold = navbar.offsetTop;
+    
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset >= threshold) {
+                navbar.classList.add('fixed');
+            } else {
+                navbar.classList.remove('fixed');
+            }
+        });
+    </script>
 </body>
 <footer>
     <div class="footer">

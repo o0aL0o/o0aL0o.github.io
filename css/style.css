@@ -30,36 +30,36 @@ ul {
     background-image: url(../image/drawing2.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 80vh;
+    height: 85vh;
 }
 
 @media only screen and (max-width: 1360px){
     .header1 {
-        height: 70vh;
+        height: 700px;
     }
 }
 
 @media only screen and (max-width: 1126px){
     .header1 {
-        height: 60vh;
+        height: 550px;
     }
 }
 
 @media only screen and (max-width: 989px){
     .header1 {
-        height: 50vh;
+        height: 400px;
     }
 }
 
 @media only screen and (max-width: 690px){
     .header1 {
-        height: 40vh;
+        height: 300px;
     }
 }
 
-@media only screen and (max-width: 412px){
+@media only screen and (max-width: 420px){
     .header1 {
-        height: 35vh;
+        height: 200px;
     }
 }
 
