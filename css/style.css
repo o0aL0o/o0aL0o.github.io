@@ -51,19 +51,17 @@ ul {
     }
 }
 
-@media only screen and (max-width: 863px){
+@media only screen and (max-width: 690px){
     .header1 {
         height: 40vh;
     }
 }
 
-@media only screen and (max-width: 690px){
+@media only screen and (max-width: 412px){
     .header1 {
-        height: 30vh;
+        height: 35vh;
     }
 }
-
-
 
 .header2 {
     background-color: #2d2c2c;
@@ -86,15 +84,15 @@ ul {
     font-size: 2vw;
     color: #ffffff;
     letter-spacing: 3px;
-    height: 50px;
+    height: auto;
 }
 .header-title {
     margin: 0;
     font-size: 5vw;
     color: #ffffff;
     letter-spacing: 3px;
-    height: 90px;
-    margin-bottom: 10%;
+    height: auto;
+    margin-bottom: 5%;
 }
 
 .header-mono {
