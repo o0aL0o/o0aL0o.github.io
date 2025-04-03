@@ -63,6 +63,8 @@ ul {
     }
 }
 
+
+
 .header2 {
     background-color: #2d2c2c;
 }
@@ -175,22 +177,27 @@ ul {
 }
 
 .profile {
+    margin-bottom: 5%;
     width: 100%;
-    height: 500px;
+    height: auto;
 }
 
 .profile-content {
-    margin-top: 50px;
-    width: 100%;
-    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: auto;
+    gap: 20px;
 }
 
 .profile-left,.profile-mid,.profile-right {
-    margin-left: 6%;
-    float: left;
-    text-wrap: pretty;
-    width: 25%;
-    height: fit-content;
+    margin-top: 5%;
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .blog {
@@ -246,7 +253,7 @@ ul {
     margin-bottom: 5%;
     padding: 2%;
     height: auto;
-    width: auto;
+    width: 100%;
 }
 
 .blogimg2{
@@ -261,9 +268,24 @@ ul {
 .contentlink a{
     color: #4fa3f8;
 }
+.contentlink img{
+    width: 100%;
+    height: auto;
+}
 
 .cantonblogimg{
     width: 90%;
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.footer {
+    background-color: #2d2c2c;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer p{
+    font-size: 50%;
 }
