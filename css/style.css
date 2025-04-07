@@ -27,7 +27,7 @@ ul {
 }
 
 .header1 {
-    background-image: url(../image/drawing2.png);
+    background-image: url(../image/drawing2\ \(2\).png);
     background-repeat: no-repeat;
     background-size: 100%;
     height: 85vh;
@@ -191,7 +191,7 @@ ul {
 
 .profile-left,.profile-mid,.profile-right {
     margin-top: 5%;
-    width: 300px;
+    width: 500px;
     display: block;
     margin-left: auto;
     margin-right: auto;
