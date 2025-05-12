@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>aL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans+Mono:wght@100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header2">
+        <div class="container">
+            <ul class="social-icons">
+                <li class="social-item github"><a href="https://github.com/o0aL0o"><img src="image/githubIcon.png" class="github"></a></li>
+                <li class="social-item"><a href="https://x.com/aL_1127a"><img src="image/xIcon.png" class="x"></a></li>
+                <li class="social-item"><a href="#"></a></li>
+                <li class="social-item"><a href="#"></a></li>
+            </ul>  
+        </div>
+    </header>
+    <div class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="index.html"><p class="navbar-text">Home & Profile</p></a>
+            <a href="project.html"><p class="navbar-text">Project blog</p></a>
+            <a href="artwork.html"><p class="navbar-text">Digital art work gallery</p></a>
+            <!-- <p>Adrian Law (aL)</p> -->
+        </div>
+    </div>
+    <div class="blog">
+        <div class="blogcontent">
+            <h1></h1>
+            <h5></h5>
+            <img src="image/drawing2 (2).png" class="blogimg">
+            <p>
+
+            </p>
+        </div>
+        <div class="blogcontent">
+            <h1></h1>
+            <h5>WIP</h5>
+            <img src="image/cati.png" class="blogimg">
+            <p>
+
+            </p>
+        </div>
+    </div>
+    <script>
+        const navbar = document.getElementById('navbar');
+        const threshold = navbar.offsetTop;
+    
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset >= threshold) {
+                navbar.classList.add('fixed');
+            } else {
+                navbar.classList.remove('fixed');
+            }
+        });
+    </script>
+</body>
+<footer>
+    <div class="footer">
+        <p>Copyright © 2025 Adrian Law (aL)</p>
+        <p>All rights reserved</p>
+        <p>My Contect</p>
+        <p>Tel: +852 66013171</p>
+        <p>Personal email: adrianlaw1127@gmail.com</p>
+        <p>School email: chlaw29-c@my.cityu.edu.hk</p>
+    </div>
+</footer>
+</html>
