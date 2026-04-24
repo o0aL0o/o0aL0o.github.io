@@ -27,13 +27,17 @@ ul {
 }
 
 .header1 {
-    background-image: url(../image/drawing2\ \(2\).png);
+    background-image: url(../image/フランチェスカ・プレラーティ.png);
+    background-blend-mode: multiply;
+    background-position: 50% 40%;
     background-repeat: no-repeat;
+    background-color: #a1a1a1;
     background-size: 100%;
-    height: 85vh;
+    height: auto;
+    width: 100%;
 }
 
-@media only screen and (max-width: 1360px){
+/* @media only screen and (max-width: 1360px){
     .header1 {
         height: 700px;
     }
@@ -61,7 +65,7 @@ ul {
     .header1 {
         height: 200px;
     }
-}
+} */
 
 .header2 {
     background-color: #2d2c2c;
