@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>aL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans+Mono:wght@100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header2">
+        <div class="container">
+            <ul class="social-icons">
+                <li class="social-item github"><a href="https://github.com/o0aL0o"><img src="../image/githubIcon.png" class="github"></a></li>
+                <li class="social-item"><a href="https://x.com/aL_1127a"><img src="../image/xIcon.png" class="x"></a></li>
+                <li class="social-item"><a href="#"></a></li>
+                <li class="social-item"><a href="#"></a></li>
+            </ul>  
+        </div>
+    </header>
+    <div class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="../index.html"><p class="navbar-text">Home & Profile</p></a>
+            <a href="../project.html"><p class="navbar-text">Project blog</p></a>
+            <a href="../artwork.html"><p class="navbar-text">Digital art work gallery</p></a>
+            <!-- <p>Adrian Law (aL)</p> -->
+        </div>
+    </div>
+    <div class="blog">
+        <div class="blogcontent2">
+            <h1>2025 summer 2 June - 29 August</h1>
+            <!-- <img src="../image/InternshipImage.jpeg" class="blogimg2"> -->
+            <h3>Task 1: "Drawing/design icons and backgrounds"</h3>
+            <p>
+                <h3>About this task:</h3> 
+                Since we are making a new mobile app, many icons and backgrounds must be drawn. The task is to follow the asset list, draw new assets, and fulfill the design style requirement.
+                <br><h3>My responsibility:</h3> 
+                I follow the asset list and make icons in Figma. For those icons and backgrounds with complicated designs. I drew it on Clip Studio Paint to have a better outcome.
+                <br><h3>Tools:</h3> 
+                Figma and Clip Studio Paint
+            </p>
+            <h3>Outcome: </h3>
+            <img src="../image/Task1.1.png" class="blogimgleft">
+            <img src="../image/Task1.2.png" class="blogimgright">
+            <img src="../image/Task1.3.png" class="blogimg2">
+            <br>
+            <h3>Task 2:  "Feature list and wireframe on screens"</h3>
+            <p>
+                <h3>About this task:</h3> 
+                Since we are making a new mobile app, we must create a new scene. Each scene will have a different feature for the user to interact with. We also need a wireframe to ensure the features are placed correctly.
+                <br><h3>My responsibility:</h3> 
+                First, I list the features we need in the scene. And put this information and list it out with labels in Excel. After finishing that, I started working on the wireframe. It is a prototype. Boxes are used as UI and labeled with UI names. Have an overall view of the UI. Easy to make small changes or remake the whole thing. After it, I also start working on the document and create a detailed explanation on how the feature works, what happens after the user interacts, what size the UI is, what color, what type of UI it is this UI etc…
+                <br><h3>Tools:</h3>
+                Figma, Excel from Lark, Word from Lark
+            </p>
+            <h3>Outcome: </h3>
+            <img src="../image/Task2.1.png" class="blogimgleft">
+            <img src="../image/Task2.2.png" class="blogimgright">
+            <img src="../image/Task2.3.png" class="blogimg2">
+            <img src="../image/Task2.4.png" class="blogimg2">
+            <br>
+            <h3>Task 3:  "AI training and image generation"</h3>
+            <p>
+                <h3>About this task:</h3> 
+                Our new mobile app has many new assets that must be added. Using generative AI to generate images will help a lot. AI training also stabilizes the outcome and fits our design style.
+                <br><h3>My responsibility:</h3> 
+                First, we need a custom Loar model. The first thing we did was collect artwork with a similar art style, group it, and label it with a description. Labeling will help AI to understand image meaning, and it will increase the model's success. Then I need to use the custom Lora model, which has the image art style we need, and generate images. In our mobile app, there are many mini-games. Each game will have a different theme. So everything should be unique. I must also create a background using AI in ComfyUI and set up a workflow. Using a checkpoint like Flux-Dex, a custom LoRA model, and magic prompts to create AI images.
+                <br><h3>Tools:</h3>
+                stable diffusion webUI, ComfyUI, KohyaSS
+            </p>
+            <h3>Outcome: </h3>
+            <img src="../image/Task3.1.png" class="blogimgleft" style="width: 50%;">
+            <img src="../image/Task3.2.png" class="blogimgright" style="width: 50%;">
+            <img src="../image/Task3.3.png" class="blogimg2">
+            <br>
+            <h3>Task 4: "Assets management and export"</h3>
+            <p>
+                <h3>About this task:</h3> 
+                 After we create many assets in Figma. Now needs to be committed to TortoiseSVN. Set up in Unity.
+                <br><h3>My responsibility:</h3> 
+                 I needed to export assets from Figma and rename the file one by one into a suitable name. It is for the Unity developer team to understand the assets easily. Next, I group the assets into a folder named by the scene name. Then I commit the folder to TortoiseSVN. I also tested in Unity to ensure the assets I uploaded work fine in Unity.
+                <br><h3>Tools:</h3>
+                TortoiseSVN, Unity, Figma
+            </p>
+        </div>
+    </div>
+    <script>
+        const navbar = document.getElementById('navbar');
+        const threshold = navbar.offsetTop;
+    
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset >= threshold) {
+                navbar.classList.add('fixed');
+            } else {
+                navbar.classList.remove('fixed');
+            }
+        });
+    </script>
+</body>
+<footer>
+    <div class="footer">
+        <p>Copyright © 2025 Adrian Law (aL)</p>
+        <p>All rights reserved</p>
+        <p>My Contect</p>
+        <p>Tel: +852 66013171</p>
+        <p>Personal email: adrianlaw1127@gmail.com</p>
+        <p>School email: chlaw29-c@my.cityu.edu.hk</p>
+    </div>
+</footer>
+</html>

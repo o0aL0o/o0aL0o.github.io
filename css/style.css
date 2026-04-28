@@ -202,8 +202,8 @@ ul {
 }
 
 .blog {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -240,13 +240,13 @@ ul {
 }
 
 .blogimgleft{
-    width: 50%;
+    width: 25%;
     float: left;
 }
 
 .blogimgright{
-    width: 50%;
-    float: right;
+    width: 25%;
+    float: left;
 }
 
 .blogcontent2{
