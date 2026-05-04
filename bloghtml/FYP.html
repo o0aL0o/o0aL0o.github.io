@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>aL</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Sans+Mono:wght@100..900&display=swap');
+    </style>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="header2">
+        <div class="container">
+            <ul class="social-icons">
+                <li class="social-item github"><a href="https://github.com/o0aL0o"><img src="../image/githubIcon.png" class="github"></a></li>
+                <li class="social-item"><a href="https://x.com/aL_1127a"><img src="../image/xIcon.png" class="x"></a></li>
+                <li class="social-item"><a href="#"></a></li>
+                <li class="social-item"><a href="#"></a></li>
+            </ul>  
+        </div>
+    </header>
+    <div class="navbar" id="navbar">
+        <div class="navbar-content">
+            <a href="../index.html"><p class="navbar-text">Home & Profile</p></a>
+            <a href="../project.html"><p class="navbar-text">Project blog</p></a>
+            <a href="../artwork.html"><p class="navbar-text">Digital art work gallery</p></a>
+            <!-- <p>Adrian Law (aL)</p> -->
+        </div>
+    </div>
+    <div class="blog">
+        <div class="blogcontent2">
+            <h1>Man VS Alien</h1>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/kOslKQafOGs?si=UUiOXYIRfuI2mBmc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            
+            <h3>Introduction</h3>
+            <p>We are aiming to create narrative-type games that combine horror elements with disruptive twists. While the market is full of horror titles that rely on jump scares as their main selling point, I aspire to create a horror narrative that truly touches players' hearts by combining family connections with the gaming experience. 
+                <br><br>
+                During the game design process, I faced the challenge of balancing these different elements. Crafting a game that is both emotionally touching and scary is actually quite difficult. Initially, we considered using different scenes to separate the horror and family elements, but after discussion, we decided this wasn't an ideal design because it would create a sense of disconnect for players. 
+                <br><br>
+                Ultimately, we decided to balance both by conveying mystery and dread through dialogue and environmental hints, while using props and narrative elements (like memory fragments) to express family bonds. 
+                <br><br>
+                We believe that if the dialogue could evoke unsettling fear during flashbacks, and if the number of props sufficiently supported the progression of the plot and family theme, we could achieve the game's intended vision. 
+            </p>
+            <br>
+            <h3>Control</h3>
+            <p>
+                WASD to move 
+                <br>
+                E/F to interact object/dialogue 
+                <br>
+                Number key 1-9 to use items
+            </p><br>
+            <h3>Playthrough</h3>
+            <p>
+                There are 3 main levels in the game. Each level has a different theme and story. The player needs to solve puzzles and 
+                find clues to progress through the game. The game is designed to be a narrative experience, 
+                so players will need to pay attention to the story and characters to fully understand the game. 
+                <br><br>
+
+            </p><br>
+            <h3>My role</h3>
+            <p>
+                programming, game ideas, 2D character sprite design and animations.
+            </p>
+            <br>
+            <br>
+            <div class="contentlink">
+                <b>GamePlay</b><br><br>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/bbVwP9pKuv0?si=6w6JLOWWwr7_o28d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        const navbar = document.getElementById('navbar');
+        const threshold = navbar.offsetTop;
+    
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset >= threshold) {
+                navbar.classList.add('fixed');
+            } else {
+                navbar.classList.remove('fixed');
+            }
+        });
+    </script>
+</body>
+<footer>
+    <div class="footer">
+        <p>Copyright © 2025 Adrian Law (aL)</p>
+        <p>All rights reserved</p>
+        <p>My Contect</p>
+        <p>Tel: +852 66013171</p>
+        <p>Personal email: adrianlaw1127@gmail.com</p>
+        <p>School email: chlaw29-c@my.cityu.edu.hk</p>
+    </div>
+</footer>
+</html>
