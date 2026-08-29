@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="404 — Not found" description="That page doesn't exist.">
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-32 sm:pt-48 pb-24">
+    <p class="label mb-6">Error · 404</p>
+    <h1 class="display-xl font-display leading-[0.95]">
+      Nothing<br />
+      <span class="it">here</span>.
+    </h1>
+    <p class="lead mt-8 max-w-xl">
+      The page you were looking for has either moved or never existed. Try the index, or the work archive.
+    </p>
+    <div class="mt-12 flex flex-wrap gap-6">
+      <a href="/" class="link">← Back to home</a>
+      <a href="/work/" class="link">All work <span aria-hidden="true">→</span></a>
+      <a href="/gallery/" class="link">Gallery <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</BaseLayout>

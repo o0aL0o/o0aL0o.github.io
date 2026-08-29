@@ -1,0 +1,38 @@
+---
+// ThemeToggle — small button in the header. The actual theme is applied by
+// an inline script in BaseLayout that runs *before* paint to avoid a flash
+// of the wrong theme (FOUC). This component only renders the button UI.
+---
+<button
+  id="theme-toggle"
+  type="button"
+  class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-mono uppercase tracking-[0.14em] border border-[color:var(--color-border)] rounded-full hover:border-[color:var(--color-border-strong)] hover:text-[color:var(--color-ink)] text-[color:var(--color-ink-mute)] transition-colors"
+  aria-label="Toggle theme"
+  title="Toggle light/dark"
+>
+  <span data-theme-icon="dark" class="hidden">☀</span>
+  <span data-theme-icon="light" class="hidden">☾</span>
+  <span data-theme-label>Theme</span>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    const label = btn.querySelector('[data-theme-label]');
+    const setLabel = () => {
+      const current = document.documentElement.dataset.theme || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      if (label) label.textContent = next === 'dark' ? 'Dark' : 'Light';
+    };
+    setLabel();
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.dataset.theme || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch {}
+      setLabel();
+      // Notify other components (lightbox background uses the data attr)
+      window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
+    });
+  }
+</script>

@@ -1,0 +1,96 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const nav = [
+  { href: '/', label: 'Index', num: '01' },
+  { href: '/work/', label: 'Work', num: '02' },
+  { href: '/about/', label: 'About', num: '03' },
+  { href: '/gallery/', label: 'Gallery', num: '04' },
+  { href: '/ai-gallery/', label: 'AI Gallery', num: '05' },
+  { href: '/contact/', label: 'Contact', num: '06' },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => {
+  if (href === '/') return path === '/';
+  return path.startsWith(href);
+};
+---
+<header class="sticky top-0 z-40 border-b border-[color:var(--color-border)] bg-[color:var(--color-bg)]/80 backdrop-blur-md">
+  <div class="mx-auto max-w-[1400px] px-6 sm:px-10">
+    <div class="flex h-16 items-center justify-between">
+      <!-- Wordmark -->
+      <a href="/" class="group flex items-baseline gap-2">
+        <span class="font-display italic text-2xl tracking-tight text-[color:var(--color-accent)]">a</span>
+        <span class="font-display text-xl tracking-tight">Adrian Law</span>
+        <span class="hidden sm:inline label ml-2 group-hover:text-[color:var(--color-ink-mute)] transition">/ Portfolio 2025</span>
+      </a>
+
+      <!-- Desktop nav + theme toggle -->
+      <div class="hidden md:flex items-center gap-2">
+        <nav class="flex items-center gap-1">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                'group flex items-baseline gap-1.5 px-3 py-2 text-sm transition-colors',
+                isActive(item.href)
+                  ? 'text-[color:var(--color-ink)]'
+                  : 'text-[color:var(--color-ink-mute)] hover:text-[color:var(--color-ink)]',
+              ]}
+            >
+              <span class="idx text-[10px]">{item.num}</span>
+              <span class="relative">
+                {item.label}
+                {isActive(item.href) && (
+                  <span class="absolute -bottom-1 left-0 right-0 h-px bg-[color:var(--color-accent)]"></span>
+                )}
+              </span>
+            </a>
+          ))}
+        </nav>
+        <ThemeToggle />
+      </div>
+
+      <!-- Mobile menu trigger -->
+      <button id="mobile-menu-trigger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+        <span class="block h-px w-5 bg-[color:var(--color-ink)]"></span>
+        <span class="block h-px w-3 bg-[color:var(--color-ink)] ml-auto"></span>
+        <span class="block h-px w-5 bg-[color:var(--color-ink)]"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[color:var(--color-border)] bg-[color:var(--color-bg)]">
+    <nav class="px-6 py-6 flex flex-col gap-1">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            'flex items-baseline gap-3 py-3 text-base border-b border-[color:var(--color-border)]',
+            isActive(item.href)
+              ? 'text-[color:var(--color-accent)]'
+              : 'text-[color:var(--color-ink-mute)]',
+          ]}
+        >
+          <span class="idx text-[10px]">{item.num}</span>
+          <span>{item.label}</span>
+        </a>
+      ))}
+      <div class="pt-4">
+        <ThemeToggle />
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const trigger = document.getElementById('mobile-menu-trigger');
+  const menu = document.getElementById('mobile-menu');
+  if (trigger && menu) {
+    trigger.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

@@ -1,0 +1,41 @@
+---
+title: "Mini Game — Webcam Tracker"
+subtitle: "Computer-vision arcade via webcam"
+year: 2023
+role: "Solo project — CV detection, game logic"
+team: "individual"
+status: "shipped"
+cover: "/images/minigameBlog.png"
+coverAlt: "Webcam mini-game screenshot"
+tags: ["Computer Vision", "Webcam", "Python", "Individual"]
+summary: "A solo game where the webcam tracks a blue circle — collect green targets, avoid red ones, beat your high score."
+order: 9
+featured: false
+links:
+  - label: "Test video"
+    href: "https://www.youtube.com/embed/dMLJsU1td9A"
+  - label: "Report (PDF)"
+    href: "/images/Finale project.pdf"
+---
+
+## Concept
+
+A webcam-based arcade game. The webcam tracks a blue circular token (held or worn by the player). Green targets spawn every 3 seconds — when the blue token overlaps one, you score a point. Red rectangles act as traps — hit one and the run ends.
+
+## How it works
+
+1. Open the webcam
+2. Display a scoreboard
+3. Spawn a green circle at a random position every 3 seconds
+4. Detect collision between the blue token and the target — if so, remove the target and add 1
+5. Spawn three red rectangles at random positions
+6. Detect collision with a red rectangle → freeze the webcam, print "Finish", and display the final score
+
+## What I learned
+
+- Webcam-based interaction is more demanding than mouse/keyboard — the threshold for "collision" has to be forgiving
+- Spawn rate is the main difficulty knob, not enemy count
+- A simple game loop (spawn → detect → score → repeat) is the cleanest way to scaffold a CV-driven game
+
+<iframe src="https://www.youtube-nocookie.com/embed/dMLJsU1td9A" title="Mini game test video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="/images/Finale%20project.pdf" title="Project report"></iframe>

@@ -1,0 +1,194 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="About Adrian Law — artist, developer, CityU student.">
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-20 sm:pt-32 pb-16">
+    <p class="label mb-6">About</p>
+    <h1 class="display-xl font-display leading-[0.95]">
+      A designer who likes<br />
+      <span class="it">hard problems</span>,<br />
+      and clean handoffs.
+    </h1>
+  </section>
+
+  <!-- Bio -->
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 border-t border-[color:var(--color-border)] pt-12">
+      <div class="md:col-span-3">
+        <p class="label">Bio</p>
+      </div>
+      <div class="md:col-span-8 md:col-start-4 space-y-6 text-[color:var(--color-ink)] text-lg leading-relaxed">
+        <p>
+          I'm Adrian Law (aL) — an artist and developer based in Hong Kong, currently studying at <span class="it">City University of Hong Kong</span>. I work at the seam of games, illustration, and generative AI.
+        </p>
+        <p>
+          My favourite part of a project is the messy middle: the point where the idea stops being a sketch and starts being a system. I've spent the last three years getting comfortable there — across Unity, Unreal Engine 5, Blender, ComfyUI, and Figma.
+        </p>
+        <p>
+          When I'm not building, I'm drawing, watching anime, or losing fights in video games.
+        </p>
+        <a href="/pdfs/Adrian-Law-CV.pdf" class="link inline-flex mt-4" download>
+          Download CV (PDF) <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 mt-32">
+    <p class="label mb-3">Trajectory</p>
+    <h2 class="display-lg font-display mb-12">Selected <span class="it">milestones</span>.</h2>
+
+    <ol class="relative border-l border-[color:var(--color-border)] ml-3 space-y-12">
+      {[
+        {
+          year: '2025 · Summer',
+          title: 'Mental Health Digital Designer',
+          org: 'AWIL Group · Internship',
+          body: 'Designed and shipped UI, icons, wireframes, and AI-generated backgrounds for a mental-health mobile app. Trained a custom LoRA, built ComfyUI workflows, and handled Unity asset handoff.',
+          tags: ['ComfyUI', 'Figma', 'LoRA', 'Unity'],
+        },
+        {
+          year: '2024 — 2025',
+          title: 'Hollow Thoughts 虛念',
+          org: 'Final Year Project',
+          body: 'HD-2D horror in Unity, focused on narrative and family connection over jump scares. Programmed core systems; designed 2D character sprites and animations.',
+          tags: ['Unity', 'HD-2D', 'Narrative'],
+        },
+        {
+          year: '2023 — 2024',
+          title: 'Year 3 — Engines and Worlds',
+          org: 'CityU · BSc Creative Media',
+          body: 'Started serious 3D game work in Unity and Unreal Engine 5. Built Man VS Alien (2D shooter), BattleTank (3D modular tank survival), and the JungleJumper UE5 parkour level.',
+          tags: ['Unity', 'UE5', 'Blender'],
+        },
+        {
+          year: '2023 — 2024',
+          title: 'Homecoming',
+          org: 'Cross-cultural installation',
+          body: 'Immersive installation exploring "home" through the lens of four cultures. Built Makey Makey triggers, prop prep, projection mapping, and 3D models.',
+          tags: ['Makey Makey', 'Projection', '3D'],
+        },
+        {
+          year: '2022 — 2023',
+          title: 'Year 2 — Foundations',
+          org: 'CityU · BSc Creative Media',
+          body: 'Worked on multiple group projects, including a board game (Fat Warrior) and a Cantonese-learning mobile app prototype. Started digital illustration in Clip Studio Paint.',
+          tags: ['Figma', 'Clip Studio Paint'],
+        },
+        {
+          year: '2021 · Jan — Feb',
+          title: 'Programmer',
+          org: 'GAMEMIRACLE Company',
+          body: 'Managed social-media accounts, built a website for their game, and ran game-bug testing cycles.',
+          tags: ['Web', 'QA', 'Social'],
+        },
+        {
+          year: '2020 — 2022',
+          title: 'Higher Diploma in Computer Game Development',
+          org: 'CUHK · School of Continuing and Professional Studies',
+          body: 'Two-year higher diploma bridging into CityU\'s BSc. Coursework across game dev foundations and studio practice.',
+          tags: ['Game Dev', 'Foundations'],
+        },
+        {
+          year: '2014 — 2020',
+          title: 'St. Francis Xavier\'s School, Tsuen Wan',
+          org: 'Secondary school',
+          body: 'Hong Kong secondary education.',
+          tags: [],
+        },
+      ].map((m) => (
+        <li class="pl-8 relative">
+          <span class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-[color:var(--color-accent)]"></span>
+          <p class="label mb-2">{m.year}</p>
+          <h3 class="font-display text-2xl tracking-tight">{m.title}</h3>
+          <p class="text-sm text-[color:var(--color-ink-mute)] mt-1">{m.org}</p>
+          <p class="mt-3 max-w-2xl text-[color:var(--color-ink)]">{m.body}</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {m.tags.map((t) => <span class="label">{t}</span>)}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- Skills matrix -->
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 mt-32">
+    <p class="label mb-3">Tools</p>
+    <h2 class="display-lg font-display mb-12">Stack <span class="it">&amp;</span> craft.</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[color:var(--color-border)]">
+      {[
+        {
+          n: 'Languages',
+          items: [
+            { n: 'C#', l: 'advanced' },
+            { n: 'C++', l: 'intermediate' },
+            { n: 'Java', l: 'intermediate' },
+            { n: 'JavaScript', l: 'intermediate' },
+            { n: 'HTML / CSS', l: 'fluent' },
+          ],
+        },
+        {
+          n: 'Engines',
+          items: [
+            { n: 'Unity', l: 'advanced' },
+            { n: 'Unreal Engine 5', l: 'intermediate' },
+            { n: 'Blender', l: 'intermediate' },
+          ],
+        },
+        {
+          n: 'Creative',
+          items: [
+            { n: 'Figma', l: 'advanced' },
+            { n: 'Clip Studio Paint', l: 'advanced' },
+            { n: 'Adobe Photoshop', l: 'working' },
+            { n: 'Adobe Illustrator', l: 'working' },
+            { n: 'Adobe After Effects', l: 'working' },
+            { n: 'ComfyUI', l: 'intermediate' },
+            { n: 'Stable Diffusion WebUI', l: 'intermediate' },
+            { n: 'KohyaSS (LoRA)', l: 'intermediate' },
+          ],
+        },
+        {
+          n: 'Other',
+          items: [
+            { n: 'VS Code', l: 'fluent' },
+            { n: 'Visual Studio', l: 'fluent' },
+            { n: 'TortoiseSVN', l: 'working' },
+            { n: 'Makey Makey', l: 'working' },
+            { n: 'Git', l: 'working' },
+          ],
+        },
+      ].map((c) => (
+        <div class="bg-[color:var(--color-bg)] p-8">
+          <p class="label mb-5">{c.n}</p>
+          <ul class="space-y-2">
+            {c.items.map((i) => (
+              <li class="flex items-baseline justify-between gap-3 text-sm">
+                <span>{i.n}</span>
+                <span class="text-[color:var(--color-ink-faint)] font-mono text-xs">{i.l}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 mt-32 border-t border-[color:var(--color-border)] pt-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+      <div class="md:col-span-5">
+        <p class="label mb-3">Contact</p>
+        <h2 class="display-md font-display">Always open to a <span class="it">good brief</span>.</h2>
+      </div>
+      <div class="md:col-span-6 md:col-start-7 space-y-3">
+        <a href="mailto:adrianlaw1127@gmail.com" class="link block">adrianlaw1127@gmail.com <span aria-hidden="true">→</span></a>
+        <a href="mailto:chlaw29-c@my.cityu.edu.hk" class="link block">chlaw29-c@my.cityu.edu.hk <span aria-hidden="true">→</span></a>
+        <p class="text-sm text-[color:var(--color-ink-mute)] mt-6">+852 6601 3171</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

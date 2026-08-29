@@ -1,0 +1,64 @@
+---
+// A click-to-zoom lightbox. Pages add data-lightbox-src to <img>/<video>
+// elements to make them open in the lightbox when clicked.
+---
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Media preview">
+  <button id="lightbox-close" class="absolute top-6 right-6 label hover:text-[color:var(--color-ink)]" aria-label="Close">Close ✕</button>
+  <img id="lightbox-img" alt="" class="hidden" />
+  <video id="lightbox-video" class="hidden" controls autoplay loop playsinline></video>
+  <p id="lightbox-caption" class="lb-caption"></p>
+</div>
+
+<script>
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const lbVideo = document.getElementById('lightbox-video') as HTMLVideoElement | null;
+  const lbCap = document.getElementById('lightbox-caption');
+  const lbClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src: string, type: 'image' | 'video', caption = '') {
+    if (!lb || !lbImg || !lbVideo || !lbCap) return;
+    if (type === 'image') {
+      lbImg.src = src;
+      lbImg.alt = caption;
+      lbImg.classList.remove('hidden');
+      lbVideo.classList.add('hidden');
+      lbVideo.pause();
+      lbVideo.removeAttribute('src');
+    } else {
+      lbVideo.src = src;
+      lbVideo.classList.remove('hidden');
+      lbImg.classList.add('hidden');
+      lbImg.removeAttribute('src');
+    }
+    lbCap.textContent = caption;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lb || !lbImg || !lbVideo) return;
+    lb.classList.remove('is-open');
+    lbImg.removeAttribute('src');
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    document.body.style.overflow = '';
+  }
+
+  // Wire up close
+  lbClose?.addEventListener('click', closeLightbox);
+  lb?.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Wire up any element with data-lightbox-src
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const el = target.closest('[data-lightbox-src]') as HTMLElement | null;
+    if (!el) return;
+    e.preventDefault();
+    const src = el.dataset.lightboxSrc!;
+    const type = (el.dataset.lightboxType as 'image' | 'video') || 'image';
+    const caption = el.dataset.lightboxCaption || (el.getAttribute('alt') || '');
+    openLightbox(src, type, caption);
+  });
+</script>

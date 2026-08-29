@@ -1,0 +1,16 @@
+# Auto-detect text files and normalize line endings
+* text=auto eol=lf
+
+# Astro
+*.astro linguist-language=Astro
+*.mdx linguist-language=Markdown
+
+# Binary
+*.mp4 binary
+*.mp3 binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary

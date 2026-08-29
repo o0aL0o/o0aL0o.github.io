@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact" description="Get in touch with Adrian Law — for commissions, collaboration, or just to say hi.">
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-20 sm:pt-32 pb-16">
+    <p class="label mb-6">Contact</p>
+    <h1 class="display-xl font-display leading-[0.95]">
+      Say <span class="it">hello</span>.
+    </h1>
+    <p class="lead mt-8 max-w-2xl">
+      For commissions, collaboration, internship enquiries, or just to talk shop — drop me a line. I usually reply within a couple of days.
+    </p>
+  </section>
+
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pb-24">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10 border-t border-[color:var(--color-border)] pt-12">
+      <!-- Form (splitforms — submissions land in adrianlaw1127@gmail.com inbox) -->
+      <form
+        action="https://splitforms.com/api/submit"
+        method="POST"
+        class="md:col-span-7 space-y-6"
+      >
+        <!-- Splitforms access key (splitforms.com/login) -->
+        <input type="hidden" name="access_key" value="lim_7134f7153eb345648924ef3e4582b700" />
+        <!-- Post-submit redirect: thank-you page (relative path so it works on any host) -->
+        <input type="hidden" name="redirect" value="/thanks" />
+        <!-- Subject line you'll see in your inbox -->
+        <input type="hidden" name="subject" value="Portfolio enquiry" />
+        <!-- Honeypot: hidden from real users, catches bots -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+        <!-- Time-trap: splitforms rejects submissions done in <2s (bots are too fast) -->
+        <input type="hidden" name="form_loaded_at" id="form-loaded-at" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <label class="block">
+            <span class="label mb-2 block">Name</span>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] focus:border-[color:var(--color-accent)] outline-none py-2 text-[color:var(--color-ink)] transition-colors"
+            />
+          </label>
+          <label class="block">
+            <span class="label mb-2 block">Email</span>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full bg-transparent border-b border-[color:var(--color-border)] focus:border-[color:var(--color-accent)] outline-none py-2 text-[color:var(--color-ink)] transition-colors"
+            />
+          </label>
+        </div>
+        <label class="block">
+          <span class="label mb-2 block">Message</span>
+          <textarea
+            name="message"
+            rows="6"
+            required
+            minlength="10"
+            class="w-full bg-transparent border-b border-[color:var(--color-border)] focus:border-[color:var(--color-accent)] outline-none py-2 text-[color:var(--color-ink)] transition-colors resize-none"
+          ></textarea>
+        </label>
+        <button
+          type="submit"
+          class="group inline-flex items-center gap-2 px-6 py-3 bg-[color:var(--color-accent)] text-[color:var(--color-bg)] font-mono uppercase tracking-wider text-sm hover:bg-[color:var(--color-ink)] transition-colors"
+        >
+          Send message
+          <span aria-hidden="true" class="group-hover:translate-x-1 transition-transform">→</span>
+        </button>
+        <p class="text-xs text-[color:var(--color-ink-faint)] font-mono">
+          Delivered straight to my inbox — no account needed on your end. Or email me directly: <a href="mailto:adrianlaw1127@gmail.com" class="link">adrianlaw1127@gmail.com</a>
+        </p>
+      </form>
+
+      <!-- Side info -->
+      <aside class="md:col-span-4 md:col-start-9 space-y-8">
+        <div>
+          <p class="label mb-3">Direct</p>
+          <a href="mailto:adrianlaw1127@gmail.com" class="link block">adrianlaw1127@gmail.com</a>
+          <a href="mailto:chlaw29-c@my.cityu.edu.hk" class="link block mt-1">chlaw29-c@my.cityu.edu.hk</a>
+          <p class="text-sm text-[color:var(--color-ink-mute)] mt-3">+852 6601 3171</p>
+        </div>
+        <div>
+          <p class="label mb-3">Elsewhere</p>
+          <ul class="space-y-1.5 text-sm">
+            <li><a href="https://github.com/o0aL0o" class="link" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://x.com/aL_1127a" class="link" target="_blank" rel="noopener noreferrer">X / Twitter <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="label mb-3">Based in</p>
+          <p class="text-sm text-[color:var(--color-ink-mute)]">Hong Kong · GMT+8</p>
+        </div>
+        <div>
+          <p class="label mb-3">Response time</p>
+          <p class="text-sm text-[color:var(--color-ink-mute)]">Usually within 48 hours on weekdays.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Stamp the form load time so splitforms can reject bot submissions
+  // (anything submitted in <2s is almost certainly automated).
+  // This runs immediately on page load — no waiting for submit.
+  const stamp = document.getElementById('form-loaded-at');
+  if (stamp) stamp.value = String(Date.now());
+</script>

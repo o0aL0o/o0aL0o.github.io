@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Thanks" description="Message received — thanks for getting in touch.">
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-32 sm:pt-48 pb-24">
+    <p class="label mb-6">Contact</p>
+    <h1 class="display-xl font-display leading-[0.95]">
+      Thanks for the <span class="it">note</span>.
+    </h1>
+    <p class="lead mt-8 max-w-2xl">
+      Your message landed in my inbox. I'll get back to you within a couple of days.
+    </p>
+    <div class="mt-12">
+      <a
+        href="/"
+        class="group inline-flex items-center gap-2 px-6 py-3 bg-[color:var(--color-accent)] text-[color:var(--color-bg)] font-mono uppercase tracking-wider text-sm hover:bg-[color:var(--color-ink)] transition-colors"
+      >
+        Back to home
+        <span aria-hidden="true" class="group-hover:-translate-x-1 transition-transform">←</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

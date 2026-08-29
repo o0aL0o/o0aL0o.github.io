@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import { publicImage } from '../../utils/publicImage.js';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => {
+    // Astro 7 loader API: derive slug from id (file path)
+    const slug = project.id.replace(/\.mdx?$/, '');
+    return {
+      params: { slug },
+      props: { project, slug },
+    };
+  });
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+  slug: string;
+}
+
+const { project, slug } = Astro.props;
+const { Content } = await render(project);
+const { data } = project;
+const cover = publicImage(data.cover);
+
+// Find prev/next (also using derived slug)
+const all = (await getCollection('projects'))
+  .map((p) => ({ entry: p, slug: p.id.replace(/\.mdx?$/, '') }))
+  .sort((a, b) => a.entry.data.order - b.entry.data.order);
+const idx = all.findIndex((p) => p.slug === slug);
+const prev = idx > 0 ? all[idx - 1].entry : null;
+const prevSlug = idx > 0 ? all[idx - 1].slug : null;
+const next = idx < all.length - 1 ? all[idx + 1].entry : null;
+const nextSlug = idx < all.length - 1 ? all[idx + 1].slug : null;
+---
+<BaseLayout
+  title={data.title}
+  description={data.summary}
+  image={data.cover}
+  ogImage={data.cover}
+>
+  <article>
+    <!-- Cover -->
+    <div class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-12 sm:pt-16">
+      <div class="aspect-[21/9] overflow-hidden bg-[color:var(--color-surface)]">
+        {cover ? (
+          <Image
+            src={cover}
+            alt={data.coverAlt || data.title}
+            loading="eager"
+            decoding="async"
+            widths={[480, 640, 960, 1280, 1600, 2000]}
+            sizes="(min-width: 1024px) 90vw, 100vw"
+            format="webp"
+            quality={84}
+            class="w-full h-full object-cover"
+          />
+        ) : (
+          <div class="w-full h-full flex items-center justify-center text-[color:var(--color-ink-faint)] label">image missing</div>
+        )}
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-12 sm:pt-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div class="md:col-span-8">
+          <p class="label mb-4">Case study · {String(data.order).padStart(2, '0')}</p>
+          <h1 class="display-lg font-display">
+            {data.title}
+          </h1>
+          {data.subtitle && (
+            <p class="lead mt-6 max-w-2xl">{data.subtitle}</p>
+          )}
+        </div>
+        <aside class="md:col-span-3 md:col-start-10">
+          <dl class="space-y-6 text-sm">
+            <div>
+              <dt class="label mb-1">Year</dt>
+              <dd>{data.year}</dd>
+            </div>
+            <div>
+              <dt class="label mb-1">Status</dt>
+              <dd class="capitalize">{data.status.replace('-', ' ')}</dd>
+            </div>
+            <div>
+              <dt class="label mb-1">Team</dt>
+              <dd class="capitalize">{data.team}</dd>
+            </div>
+            <div>
+              <dt class="label mb-1">Role</dt>
+              <dd class="text-[color:var(--color-ink-mute)]">{data.role}</dd>
+            </div>
+            {data.links.length > 0 && (
+              <div>
+                <dt class="label mb-2">Links</dt>
+                <dd class="flex flex-col gap-1.5">
+                  {data.links.map((l) => (
+                    <a href={l.href} class="link" target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                      {l.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </dd>
+              </div>
+            )}
+          </dl>
+        </aside>
+      </div>
+
+      <!-- Tags row -->
+      <div class="mt-12 flex flex-wrap gap-2">
+        {data.tags.map((t) => (
+          <span class="label border border-[color:var(--color-border)] px-3 py-1.5 rounded-full">{t}</span>
+        ))}
+      </div>
+    </header>
+
+    <!-- Summary block -->
+    <section class="mx-auto max-w-[1400px] px-6 sm:px-10 mt-16 sm:mt-24">
+      <p class="display-sm font-display max-w-3xl">
+        <span class="it">“</span>{data.summary}<span class="it">”</span>
+      </p>
+    </section>
+
+    <!-- Body -->
+    <section class="mx-auto max-w-[1400px] px-6 sm:px-10 mt-16 sm:mt-24">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div class="md:col-span-8 md:col-start-3 prose">
+          <Content />
+        </div>
+      </div>
+    </section>
+
+    <!-- Prev / next -->
+    <nav class="mx-auto max-w-[1400px] px-6 sm:px-10 mt-32 border-t border-[color:var(--color-border)] pt-12">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {prev ? (
+          <a href={`/work/${prevSlug}/`} class="group block">
+            <p class="label mb-2">← Previous</p>
+            <p class="display-sm font-display group-hover:text-[color:var(--color-accent)] transition-colors">{prev.data.title}</p>
+          </a>
+        ) : <div></div>}
+        {next ? (
+          <a href={`/work/${nextSlug}/`} class="group block sm:text-right">
+            <p class="label mb-2">Next →</p>
+            <p class="display-sm font-display group-hover:text-[color:var(--color-accent)] transition-colors">{next.data.title}</p>
+          </a>
+        ) : <div></div>}
+      </div>
+    </nav>
+  </article>
+</BaseLayout>

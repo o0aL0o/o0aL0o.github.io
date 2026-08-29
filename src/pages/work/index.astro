@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const allTags = Array.from(new Set(projects.flatMap((p) => p.data.tags))).sort();
+---
+<BaseLayout title="Work" description="Selected projects — game design, installations, mobile apps, and AI-driven work.">
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-20 sm:pt-32 pb-16">
+    <p class="label mb-6">Index</p>
+    <h1 class="display-xl font-display">
+      Work<span class="it">,</span> by year<span class="it">.</span>
+    </h1>
+    <p class="lead mt-8 max-w-2xl">
+      Every project I've shipped, broken down by year and tagged with the tools and roles I held. Click any project to see the case study.
+    </p>
+  </section>
+
+  <!-- Filter chips -->
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10">
+    <div class="border-y border-[color:var(--color-border)] py-4 flex flex-wrap gap-2 items-center">
+      <span class="label mr-2">Filter</span>
+      <button data-filter="all" class="filter-chip is-active">All</button>
+      {allTags.map((t) => (
+        <button data-filter={t} class="filter-chip">{t}</button>
+      ))}
+    </div>
+  </section>
+
+  <!-- Project list -->
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 py-16">
+    <ul class="divide-y divide-[color:var(--color-border)]">
+      {projects.map((p) => (
+        <li data-project data-tags={p.data.tags.join(',')}>
+          <a
+            href={`/work/${p.id.replace(/\.mdx?$/, '')}/`}
+            class="group grid grid-cols-12 gap-4 sm:gap-8 py-8 sm:py-10 items-baseline hover:bg-[color:var(--color-surface)] transition-colors -mx-4 sm:-mx-6 px-4 sm:px-6"
+          >
+            <span class="col-span-2 sm:col-span-1 idx">{String(p.data.order).padStart(2, '0')}</span>
+            <div class="col-span-10 sm:col-span-7">
+              <h2 class="display-sm font-display group-hover:text-[color:var(--color-accent)] transition-colors">
+                {p.data.title}
+              </h2>
+              <p class="text-sm text-[color:var(--color-ink-mute)] mt-1 max-w-prose">{p.data.subtitle}</p>
+            </div>
+            <div class="hidden sm:block sm:col-span-2 text-sm text-[color:var(--color-ink-mute)]">
+              {p.data.role.split(',')[0].trim()}
+            </div>
+            <div class="col-span-12 sm:col-span-1 flex items-center gap-3 justify-between sm:justify-end">
+              <span class="label">{p.data.year}</span>
+              <span aria-hidden="true" class="text-[color:var(--color-ink-faint)] group-hover:text-[color:var(--color-accent)] group-hover:translate-x-1 transition-all">→</span>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .filter-chip {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-label);
+    font-size: 0.7rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-ink-mute);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .filter-chip:hover { color: var(--color-ink); border-color: var(--color-border-strong); }
+  .filter-chip.is-active {
+    color: var(--color-bg);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+</style>
+
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.filter-chip');
+  const items = document.querySelectorAll<HTMLLIElement>('[data-project]');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => c.classList.remove('is-active'));
+      chip.classList.add('is-active');
+      const filter = chip.dataset.filter!;
+      items.forEach((item) => {
+        const tags = (item.dataset.tags || '').split(',');
+        const show = filter === 'all' || tags.includes(filter);
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+</script>

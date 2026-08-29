@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { publicImage } from '../../utils/publicImage.js';
+
+const items = (await getCollection('digital')).sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout title="Gallery" description="Digital illustration gallery — character work, fan art, and concept sketches.">
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pt-20 sm:pt-32 pb-16">
+    <p class="label mb-6">Gallery · 01</p>
+    <h1 class="display-xl font-display">
+      Digital <span class="it">illustration</span>.
+    </h1>
+    <p class="lead mt-8 max-w-2xl">
+      A selection of personal work drawn in Clip Studio Paint — character art, fan pieces, and a few work-in-progress sketches. Click any image to view at full size.
+    </p>
+    <div class="mt-8 flex items-baseline gap-6">
+      <p class="idx">{items.length} pieces</p>
+      <p class="idx">2024 — 2025</p>
+    </div>
+  </section>
+
+  <!-- Masonry-ish grid using CSS columns -->
+  <section class="mx-auto max-w-[1400px] px-6 sm:px-10 pb-24">
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+      {items.map((item, i) => {
+        const img = publicImage(item.data.cover);
+        if (!img) return null;
+        return (
+          <figure class="group mb-6 break-inside-avoid relative overflow-hidden">
+            <button
+              type="button"
+              class="block w-full text-left"
+              data-lightbox-src={img.src}
+              data-lightbox-type="image"
+              data-lightbox-caption={`${item.data.title} — ${item.data.medium} (${item.data.year})`}
+              aria-label={`Open ${item.data.title}`}
+            >
+              <div class="relative overflow-hidden bg-[color:var(--color-surface)]">
+                <Image
+                  src={img}
+                  alt={item.data.title}
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  widths={[320, 480, 640, 960, 1280]}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  format="webp"
+                  quality={80}
+                  class="w-full h-auto transition-transform duration-700 group-hover:scale-105"
+                />
+                {item.data.wip && (
+                  <span class="absolute top-3 left-3 label bg-[color:var(--color-bg)]/80 backdrop-blur px-2 py-1 rounded">
+                    WIP
+                  </span>
+                )}
+              </div>
+              <figcaption class="mt-3 flex items-baseline justify-between gap-3">
+                <span class="text-sm group-hover:text-[color:var(--color-accent)] transition-colors">
+                  {item.data.title}
+                </span>
+                <span class="idx text-[10px]">{String(i + 1).padStart(2, '0')}</span>
+              </figcaption>
+              <p class="text-xs text-[color:var(--color-ink-faint)] font-mono mt-1">
+                {item.data.medium} · {item.data.year}
+              </p>
+            </button>
+          </figure>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>

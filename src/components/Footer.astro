@@ -1,0 +1,57 @@
+---
+const year = new Date().getFullYear();
+const socials = [
+  { label: 'GitHub', href: 'https://github.com/o0aL0o' },
+  { label: 'X / Twitter', href: 'https://x.com/aL_1127a' },
+  { label: 'Email', href: 'mailto:adrianlaw1127@gmail.com' },
+];
+---
+<footer class="mt-32 border-t border-[color:var(--color-border)]">
+  <div class="mx-auto max-w-[1400px] px-6 sm:px-10 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+      <!-- Statement -->
+      <div class="md:col-span-5">
+        <p class="font-display text-3xl sm:text-4xl leading-[1.05] tracking-tight">
+          Let's make something <span class="it">unforgettable</span>.
+        </p>
+        <a href="mailto:adrianlaw1127@gmail.com" class="link mt-6 inline-flex text-base">
+          adrianlaw1127@gmail.com
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- Sitemap -->
+      <div class="md:col-span-3">
+        <p class="label mb-4">Sitemap</p>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/work/" class="hover:text-[color:var(--color-accent)] transition-colors">Work</a></li>
+          <li><a href="/about/" class="hover:text-[color:var(--color-accent)] transition-colors">About</a></li>
+          <li><a href="/gallery/" class="hover:text-[color:var(--color-accent)] transition-colors">Gallery</a></li>
+          <li><a href="/ai-gallery/" class="hover:text-[color:var(--color-accent)] transition-colors">AI Gallery</a></li>
+          <li><a href="/contact/" class="hover:text-[color:var(--color-accent)] transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Socials -->
+      <div class="md:col-span-4">
+        <p class="label mb-4">Elsewhere</p>
+        <ul class="space-y-2 text-sm">
+          {socials.map((s) => (
+            <li>
+              <a href={s.href} class="link" target={s.href.startsWith('http') ? '_blank' : undefined} rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                {s.label}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule mt-16 mb-6"></div>
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-[color:var(--color-ink-faint)]">
+      <p>© {year} Adrian Law (aL). All rights reserved.</p>
+      <p class="font-mono">Hong Kong · GMT+8</p>
+    </div>
+  </div>
+</footer>

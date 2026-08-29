@@ -1,0 +1,51 @@
+---
+title: "BattleTank"
+subtitle: "Modular 3D tank survival in a wilderness"
+year: 2023
+role: "Programming, Game Ideas, Scene Design"
+team: "group"
+status: "shipped"
+cover: "/images/battletankimg.png"
+coverAlt: "BattleTank gameplay"
+tags: ["Unity", "3D", "Survival", "Modular", "Group"]
+summary: "Top-down 3D tank survival. Kill enemies, earn money, swap parts in build mode, survive escalating waves."
+order: 7
+featured: false
+links:
+  - label: "Gameplay"
+    href: "https://www.youtube.com/embed/EliDxFZ18t8"
+---
+
+## Core loop
+
+Kill enemies → earn money → enter build mode → attach new parts to your tank → survive longer → earn more money.
+
+## Controls
+
+- **W / S** — forward / reverse (with acceleration and deceleration for weight)
+- **A / D** — rotate left / right
+- **B** — toggle build mode
+- **1 / 2 / 3** — switch weapon to build
+
+## Build mode
+
+Pressing **B** pauses the game. You can then attach weapons to your tank — machine gun, cannon, or wall — limited only by how much money you've banked. There's no cap on the number of parts, so combinations snowball.
+
+## Enemy waves
+
+Enemies spawn around the tank on a timer:
+
+| Time | Spawns |
+|---|---|
+| 0:00 – 1:00 | Zombies |
+| 1:00 – 2:00 | Vampires |
+| 2:00 – 3:00 | Egg monsters |
+| 3:00+ | Multiple spawns, escalating |
+
+Each enemy has its own move and attack — some long-range, some close-range.
+
+## What I did
+
+Programming the controller, build mode, and wave spawner, plus scene design.
+
+<iframe src="https://www.youtube-nocookie.com/embed/EliDxFZ18t8" title="BattleTank gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Lightbox from '../components/Lightbox.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  ogImage?: string;
+  variant?: 'default' | 'subtle';
+}
+
+const {
+  title,
+  description = 'Adrian Law — Artist & Developer. Portfolio of game design, digital art, and AI-generated work.',
+  image,
+  ogImage = '/images/og-default.png',
+  variant = 'default',
+} = Astro.props;
+
+const fullTitle = title === 'Adrian Law' ? title : `${title} — Adrian Law`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)" />
+
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+  <meta property="og:site_name" content="Adrian Law" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+  <!-- Favicon (inline SVG, no extra file) -->
+  <link rel="icon" type="image/svg+xml" href={`data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230a0a0b'/><text x='50' y='66' font-family='Georgia,serif' font-size='56' fill='%23e8dcc4' text-anchor='middle' font-style='italic'>a</text></svg>`} />
+
+  <!-- Fonts: editorial pair -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <!-- Pre-paint theme script: picks stored or system preference, no FOUC -->
+  <script is:inline>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.dataset.theme = stored;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.dataset.theme = 'light';
+        } else {
+          document.documentElement.dataset.theme = 'dark';
+        }
+      } catch (e) {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    })();
+  </script>
+</head>
+<body class="bg-[color:var(--color-bg)] text-[color:var(--color-ink)]">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-3 focus:py-2 focus:bg-[color:var(--color-accent)] focus:text-[color:var(--color-bg)] focus:rounded">Skip to content</a>
+  <Header />
+  <main id="main" class="min-h-screen">
+    <slot />
+  </main>
+  <Footer />
+  <Lightbox />
+</body>
+</html>
+
+<style is:global>
+  body { background: var(--color-bg); }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(ellipse at 50% -10%, color-mix(in oklab, var(--color-accent) 6%, transparent), transparent 60%);
+  }
+</style>
